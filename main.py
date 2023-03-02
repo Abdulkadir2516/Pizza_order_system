@@ -15,15 +15,19 @@ def create_file(path="./",file_name = "menu.txt",):
 
         dosya.close()
 
-create_file()
-
-
 
 def main():
     # Menüyü ekrana yazdırma
+    # Dosya İçerisini okuma
+    """
+    file = open("./menu.txt", "r", encoding="Utf-8")
+    print(file.read())
+    file.close()
+    """
+
     print("Menü:")
     print("1. Klasik Pizza")
-    print("2. Margherita Pizza")
+    print("2. Margarita Pizza")
     print("3. Türk Pizza")
     print("4. Dominos Pizza")
     print("5. Çıkış")
@@ -38,15 +42,24 @@ def main():
         print("Programdan çıkılıyor...")
         return
 
+    print("Sos Menü:")
+    print("1. Zeytin")
+    print("2. Mantar")
+    print("3. Keçi Peyniri")
+    print("4. Et")
+    print("5. Soğan")
+    print("6. Mısır")
+
+    sauces= ["Zeytin", "Mantar", "Keçi Peyniri", "Et", "Soğan", "Mısır"]
     sauce_choices = []
     while True:
         sauce_choice = input("Lütfen bir sos seçin (q ile çıkış): ")
         if sauce_choice.lower() == "q":
             break
-        elif sauce_choice not in ["Zeytin", "Mantar", "Keçi Peyniri", "Et", "Soğan", "Mısır"]:
+        elif sauce_choice not in ["1", "2", "3", "4", "5", "6"]:
             print("Lütfen geçerli bir sos seçin.")
         else:
-            sauce_choices.append(sauce_choice)
+            sauce_choices.append(sauces[int(sauce_choice)])
 
     # Pizza nesnesinin oluşturulması
     if pizza_choice == "1":
@@ -93,6 +106,8 @@ def main():
         writer.writerow([name, id_number, credit_card_number, credit_card_cvv, order_description, order_time])
 
     print("Siparişiniz başarıyla kaydedildi. Teşekkür ederiz!")
+
+create_file()
 
 if __name__ == "__main__":
     main()
